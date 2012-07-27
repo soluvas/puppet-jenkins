@@ -78,7 +78,7 @@ class jenkins (
   }
 
   exec { download-jenkins:
-    command   => "curl -v -o '/var/lib/tomcat${jenkins::tomcat_version}/webapps/jenkins.war' '${dist_uri}'",
+    command   => "curl -v -L -o '/var/lib/tomcat${jenkins::tomcat_version}/webapps/jenkins.war' '${dist_uri}'",
     user      => "tomcat${jenkins::tomcat_version}",
     group     => "tomcat${jenkins::tomcat_version}",
     path      => ['/bin', '/usr/bin'],
