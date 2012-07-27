@@ -1,0 +1,31 @@
+h1. jenkins
+
+This is the jenkins module.
+
+h2. Sample Usage
+
+bc.  # Jenkins
+  class { jenkins:
+  	tomcat_version     => 6,
+  	dist_uri           => 'http://192.168.66.17:8080/alfresco/webdav/Sites/bippo/documentLibrary/Installer/Jenkins/jenkins.war',
+  	private_key_source => 'puppet:///modules/bippodeveloper/jenkins/id_rsa',
+  	public_key_source  => 'puppet:///modules/bippodeveloper/jenkins/id_rsa.pub',
+  }
+  class { jenkins::nginx:
+  	server_name => 'jenkins.hadi.dev',
+  }
+  class { jenkins::git:
+  	email => 'sysadmin+jenkins.hadi.dev@bippo.co.id',
+  }
+  class { jenkins::maven:
+  	settings_source => 'puppet:///modules/bippodeveloper/jenkins/m2_settings.xml',
+  }
+
+h2. Git
+
+Git needs to be installed separetely, @jenkins::git@ will install the Git Jenkins plugin
+and setup sane defaults for @tomcat{6|7}@ user.
+
+h2. Ant & Maven
+
+You will still need to configure Ant (antlibs) and Maven separately.

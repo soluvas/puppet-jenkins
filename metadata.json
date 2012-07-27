@@ -1,0 +1,24 @@
+{
+  "name": "ceefour-jenkins",
+  "author": "ceefour",
+  "description": "",
+  "license": "",
+  "project_page": "",
+  "source": "",
+  "summary": "",
+  "version": "",
+  "checksums": {
+    "Modulefile": "989bfc72f64856eabe2e790ef7a1b5a3",
+    "README.textile": "6026962fd174dcac310965cf7c31fb09",
+    "manifests/git.pp": "98759e40870471eeba2616b4e0d6b947",
+    "manifests/init.pp": "681d8c968464d145b4a98d04450ad030",
+    "manifests/maven.pp": "4010a22175dd4833fe29f2d467469096",
+    "manifests/nginx.pp": "eaf61a5815b0ebc3bc80cd764784116e",
+    "spec/spec.opts": "a600ded995d948e393fbe2320ba8e51c",
+    "spec/spec_helper.rb": "ca19ec4f451ebc7fdb035b52eae6e909",
+    "templates/gitconfig.erb": "65a9a15268a11ef7a30fb848074d8c22",
+    "templates/jenkins.nginx.erb": "05c9cb9c7397bc2711c213f5ef8ca897",
+    "tests/init.pp": "f3efee0dc58cbe32a1c03854b9801fa7"
+  },
+  "dependencies": []
+}
