@@ -4,7 +4,19 @@ This is the jenkins module.
 
 h2. Sample Usage
 
-bc.  # Jenkins
+bc.  # Preconfigure Tomcat
+  # Important: Must add user tomcat6 to plugdev if $PLEXUS_NEXUS_WORK is in NTFS
+  file { '/etc/default/tomcat6':
+  	mode    => 0644,
+  	source  => 'puppet:///modules/bippodeveloper/hadi/tomcat6_default',
+  }
+  class { tomcat:
+    version        => 6, # don't use 7, conflicts with Openbravo
+    enable_service => true,
+  }
+  File['/etc/default/tomcat6'] -> Class['tomcat']
+
+  # Jenkins
   class { jenkins:
   	tomcat_version     => 6,
   	dist_uri           => 'http://192.168.66.17:8080/alfresco/webdav/Sites/bippo/documentLibrary/Installer/Jenkins/jenkins.war',
@@ -20,6 +32,10 @@ bc.  # Jenkins
   class { jenkins::maven:
   	settings_source => 'puppet:///modules/bippodeveloper/jenkins/m2_settings.xml',
   }
+
+Note: In @/etc/default/tomcat{6|7}@, you still need to separately configure:
+
+bc. JENKINS_HOME=/home/jenkins/.jenkins
 
 h2. Git
 
